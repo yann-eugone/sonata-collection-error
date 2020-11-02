@@ -25,7 +25,7 @@ class Person
     private $firstname;
 
     /**
-     * @ORM\OneToMany(targetEntity=Experience::class, mappedBy="person", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Experience::class, mappedBy="person", orphanRemoval=true, cascade={"all"})
      */
     private $experiences;
 
@@ -71,7 +71,8 @@ class Person
 
     public function removeExperience(Experience $experience): self
     {
-        if ($this->experiences->removeElement($experience)) {
+        if ($this->experiences->contains($experience)) {
+            $this->experiences->removeElement($experience);
             // set the owning side to null (unless already changed)
             if ($experience->getPerson() === $this) {
                 $experience->setPerson(null);
