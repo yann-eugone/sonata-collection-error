@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use App\Repository\ExperienceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ExperienceRepository::class)
+ * @UniqueEntity({"description", "person"})
  */
 class Experience
 {
