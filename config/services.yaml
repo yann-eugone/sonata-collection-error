@@ -29,3 +29,17 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    admin.person:
+        class: App\Admin\PersonAdmin
+        arguments: [~, App\Entity\Person, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Person }
+        public: true
+
+    admin.experience:
+        class: App\Admin\ExperienceAdmin
+        arguments: [~, App\Entity\Experience, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Experience }
+        public: true
