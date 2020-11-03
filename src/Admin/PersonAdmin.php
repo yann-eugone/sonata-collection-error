@@ -45,7 +45,7 @@ final class PersonAdmin extends AbstractAdmin
             ->add(
                 'experiences',
                 CollectionType::class,
-                [],
+                ['by_reference' => false],
                 [
                     'edit' => 'inline',
                     'inline' => 'table',
